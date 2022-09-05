@@ -1,22 +1,22 @@
 // Header
+.header {}
 
 // Navbar
-nav {
-  background-color: rgba(0, 119, 134, 0.651);
-  overflow: hidden;
-}
+.nav {}
 
 .navbar {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .logo {
-  a {
-      color: white;
+  border-radius: 5px;
+
+  a img {
+    border-radius: 5px;
   }
 }
 
@@ -25,12 +25,25 @@ nav {
 
   // .menu__item
   &__item {
-      margin-left: 25px;
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+
+    &.active .menu__item-link {
+      color: $blueColor;
+    }
   }
 
   // .menu__item-link
   &__item-link {
-      color: white;
+    font-weight: 500;
+    font-size: 18px;
+    color: $whiteColor;
+
+    &:hover {
+      transition: all 0.3s ease 0s;
+      color: $blueColor;
+    }
   }
 }
 
@@ -41,97 +54,111 @@ nav {
 
 // Burger menu styles
 @media screen and (max-width: $burgerBreakpoint) {
+
   // .menu
   .menu {
-      position: fixed;
-      background: #131418;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 100vw;
-      display: none;
+    position: fixed;
+    background: #131418;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
 
-      &.active {
-          display: flex;
-          left: 0;
-          top: 0;
-          height: 100vh;
-          width: 100vw;
-          flex-direction: column;
-          pointer-events: all;
-          justify-content: center;
-          align-items: center;
-          z-index: 22;
-          animation: fade 0.1s linear;
+    &.active {
+      display: flex;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 200px;
+      flex-direction: column;
+      pointer-events: all;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding-top: 20vh;
+      padding-right: 20px;
+      z-index: 22;
+      animation: fade 0.1s linear;
+
+      @media (max-width: $breakpoint768) {
+        width: 150px;
       }
+    }
   }
 
   // .burger
   .burger {
-      display: block;
-      position: relative;
-      height: 20px;
-      width: 30px;
-      z-index: 102;
-      cursor: pointer;
+    display: block;
+    position: relative;
+    height: 20px;
+    width: 30px;
+    z-index: 102;
+    cursor: pointer;
 
-      &.active-burger {
-          &:before {
-              background: $burgerActiveColor;
-              transform: rotate(45deg);
-              transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-              top: 8px;
-          }
-
-          &:after {
-              background: $burgerActiveColor;
-              transform: rotate(-45deg);
-              bottom: 10px;
-              transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-          }
-
-          & span {
-              transform: scale(0);
-          }
-      }
-
-      &:before,
-      &:after {
-          content: '';
-          position: absolute;
-          height: 2px;
-          width: 100%;
-          background: $burgerColor;
-          transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
-      }
-
+    &.active-burger {
       &:before {
-          top: 0;
+        background: $burgerActiveColor;
+        transform: rotate(45deg);
+        transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+        top: 8px;
       }
 
-      &::after {
-          bottom: 0;
+      &:after {
+        background: $burgerActiveColor;
+        transform: rotate(-45deg);
+        bottom: 10px;
+        transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
       }
 
-      span {
-          position: absolute;
-          top: 9px;
-          right: 0;
-          width: 100%;
-          background: $burgerColor;
-          height: 2px;
-          transform: scale(1);
-          transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+      & span {
+        transform: scale(0);
       }
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: $burgerColor;
+      transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    span {
+      position: absolute;
+      top: 9px;
+      right: 0;
+      width: 100%;
+      background: $burgerColor;
+      height: 2px;
+      transform: scale(1);
+      transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    }
   }
 
   // .menu__item
   .menu__item {
-      margin-top: 15px;
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 30px;
+
+      @media (max-width: $breakpoint768) {
+        margin-bottom: 20px;
+      }
+    }
   }
 
   // .menu__link
   .menu__item-link {
-      color: white;
+    color: white;
   }
 }
