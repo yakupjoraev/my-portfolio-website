@@ -1,5 +1,11 @@
 // Header
-.header {}
+.header {
+  margin-bottom: 50px;
+
+  @media (max-width: $breakpoint480) {
+    margin-bottom: 30px;
+  }
+}
 
 // Navbar
 .nav {}
@@ -10,6 +16,10 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 30px;
+
+  @media (max-width: $breakpoint480) {
+    padding-top: 15px;
+  }
 }
 
 .logo {
