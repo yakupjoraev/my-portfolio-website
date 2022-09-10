@@ -1,10 +1,43 @@
 .skills {
+  padding-bottom: 0;
+
+  @media (max-width: $breakpoint992) {
+    overflow: hidden;
+    width: 80%;
+    min-height: 85vw;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: $breakpoint768) {
+      width: 100%;
+      overflow: auto;
+    }
+  }
 
   // .skills__inner
 
   &__inner {
     display: flex;
     background-color: #222;
+    overflow: hidden;
+
+    @media (max-width: $breakpoint992) {
+      flex-direction: column;
+      position: absolute;
+      width: 101%;
+      min-height: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: $breakpoint768) {
+      position: static;
+      width: 100%;
+    }
   }
 
   // .skills__about
@@ -12,7 +45,10 @@
   &__about {
     padding: 30px 25px;
     flex: 0 1 30%;
-    
+
+    @media (max-width: $breakpoint768) {
+      padding: 20px 15px;
+    }
   }
 
   // .skills__about-photo
@@ -53,6 +89,11 @@
   &__about-icon {
     width: 25px;
     height: 25px;
+
+    @media (max-width: $breakpoint768) {
+      width: 15px;
+      height: 15px;
+    }
   }
 
   // .skills__about-text
@@ -61,6 +102,10 @@
     margin-left: 10px;
     font-size: 16px;
     color: #a2a2a2;
+
+    @media (max-width: $breakpoint768) {
+      font-size: 14px;
+    }
   }
 
   // .skills__about-cv
@@ -72,11 +117,10 @@
 
   // .skills__about-link
 
-  &__about-link {
-    
-  }
+  &__about-link {}
 
   &__info-container {
+    position: relative;
     flex: 0 1 70%;
     padding: 30px 25px;
     border-left: 1px dashed hsla(0, 0%, 100%, .15);
@@ -84,27 +128,20 @@
 
   // .skills__info
 
-  &__info {}
+  &__info {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 
-  // .skills__info-services
+    @media (max-width: $breakpoint992) {
+      position: static;
+      overflow: auto;
+    }
+  }
 
-  &__info-services {}
-
-  // .skills__info-programming
-
-  &__info-programming {}
-
-  // .skills__info-language
-
-  &__info-language {}
-
-  // .skills__info-education
-
-  &__info-education {}
-
-  // .skills__info-working
-
-  &__info-working {}
 }
 
 .skills-title {
@@ -120,6 +157,10 @@
 
 .services {
   margin-bottom: 50px;
+
+  @media (max-width: $breakpoint768) {
+    margin-bottom: 30px;
+  }
 
   // .services__title
 
@@ -138,12 +179,13 @@
     padding-left: 30px;
     font-size: 18px;
     color: #a2a2a2;
+
     &:not(:last-child) {
       margin-bottom: 15px;
     }
 
-    &::after{
-      content:'';
+    &::after {
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -154,11 +196,27 @@
       border-bottom: 8px solid transparent;
     }
 
+    @media (max-width: $breakpoint768) {
+      font-size: 15px;
+
+      &::after {
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 4px solid transparent;
+        border-left: 8px solid $blueColor;
+        border-bottom: 4px solid transparent;
+      }
+    }
+
   }
 }
 
 .programming {
   margin-bottom: 50px;
+
+  @media (max-width: $breakpoint768) {
+    margin-bottom: 30px;
+  }
 
   // .programming__title
 
@@ -177,12 +235,13 @@
     padding-left: 30px;
     font-size: 18px;
     color: #a2a2a2;
+
     &:not(:last-child) {
       margin-bottom: 15px;
     }
 
-    &::after{
-      content:'';
+    &::after {
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -193,50 +252,28 @@
       border-bottom: 8px solid transparent;
     }
 
-  }
-}
+    @media (max-width: $breakpoint768) {
+      font-size: 15px;
 
-.language {
-  margin-bottom: 50px;
+      &::after {
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 4px solid transparent;
+        border-left: 8px solid $blueColor;
+        border-bottom: 4px solid transparent;
+      }
+    }
 
-  // .language__title
-
-  &__title {}
-
-  // .language__list
-
-  &__list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 15px 0;
-  }
-
-  // .language__item
-
-  &__item {
-    
-  }
-
-  // .language__procent
-
-  &__procent {
-
-  }
-
-  // .language__circle
-
-  &__circle {}
-
-  // .language__name
-
-  &__name {
-    font-size: 18px;
-    color: #a2a2a2;
   }
 }
 
 .education {
+  position: relative;
   margin-bottom: 50px;
+
+  @media (max-width: $breakpoint768) {
+    margin-bottom: 30px;
+  }
 
   // .education__title
 
@@ -244,45 +281,225 @@
 
   // .education__list
 
-  &__list {}
+  &__list {
+    position: relative;
+    padding: 30px 25px;
+    margin-top: 30px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: hsla(0, 0%, 100%, .15);
+    }
+
+    @media (max-width: $breakpoint768) {
+      padding-top: 0;
+      padding-right: 0;
+    }
+  }
 
   // .education__item
 
-  &__item {}
+  &__item {
+    position: relative;
+    font-size: 18px;
+    color: #a2a2a2;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 14px;
+      width: 14px;
+      background: $blueColor;
+      border-radius: 100%;
+      border: 1px solid $blueColor;
+      left: -32px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      font-size: 15px;
+
+      &::after {
+        left: -25px;
+        height: 100%;
+        width: 2px;
+        border-radius: 5px;
+      }
+    }
+  }
 
   // .education__item-inner
 
-  &__item-inner {}
+  &__item-inner {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $breakpoint768) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
   // .education__item-time
 
-  &__item-time {}
+  &__item-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    background-color: #a2a2a218;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    span {
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+
+    @media (max-width: $breakpoint768) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
 
   // .education__item-place
 
-  &__item-place {}
+  &__item-place {
+    text-align: right;
+
+    h4 {
+      margin-bottom: 5px;
+      font-weight: 20px;
+      color: $whiteColor;
+    }
+
+    @media (max-width: $breakpoint768) {
+      text-align: center;
+    }
+  }
 }
 
 .working {
+  position: relative;
   margin-bottom: 50px;
 
   // .working__list
 
-  &__list {}
+  &__list {
+    position: relative;
+    padding: 30px 25px;
+    margin-top: 30px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: hsla(0, 0%, 100%, .15);
+    }
+  }
 
   // .working__item
 
-  &__item {}
+  &__item {
+    position: relative;
+    font-size: 18px;
+    color: #a2a2a2;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 14px;
+      width: 14px;
+      background: $blueColor;
+      border-radius: 100%;
+      border: 1px solid $blueColor;
+      left: -32px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      font-size: 15px;
+
+      &::after {
+        left: -25px;
+        height: 100%;
+        width: 2px;
+        border-radius: 5px;
+      }
+    }
+  }
 
   // .working__item-inner
 
-  &__item-inner {}
+  &__item-inner {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $breakpoint768) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
   // .working__item-time
 
-  &__item-time {}
+  &__item-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    background-color: #a2a2a218;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    span {
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+
+    @media (max-width: $breakpoint768) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
 
   // .working__item-place
 
-  &__item-place {}
+  &__item-place {
+    text-align: right;
+
+    h4 {
+      margin-bottom: 5px;
+      font-weight: 20px;
+      color: $whiteColor;
+    }
+
+    @media (max-width: $breakpoint768) {
+      text-align: center;
+    }
+  }
 }
